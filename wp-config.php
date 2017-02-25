@@ -18,14 +18,16 @@
  * @package WordPress
  */
 
-// if (strpos($_SERVER['SERVER_NAME'], 'localhost') !== false) {
-// 	define('DB_NAME', 'wp_sniperslax');
-// 	define('DB_USER', 'sniperslax');
-// 	define('DB_PASSWORD', 'snipers1234');
-// 	define('DB_HOST', 'localhost');
-// 	define('DB_CHARSET', 'utf8');
-// 	define('DB_COLLATE', '');
-// } else {
+php_info();
+
+if (strpos($_SERVER['SERVER_NAME'], 'localhost') !== false) {
+	define('DB_NAME', 'wp_sniperslax');
+	define('DB_USER', 'sniperslax');
+	define('DB_PASSWORD', 'snipers1234');
+	define('DB_HOST', 'localhost');
+	define('DB_CHARSET', 'utf8');
+	define('DB_COLLATE', '');
+} else {
 	// ** MySQL settings - You can get this info from your web host ** //
 	$url = parse_url(getenv('DATABASE_URL') ? getenv('DATABASE_URL') : getenv('CLEARDB_DATABASE_URL'));
 
@@ -46,7 +48,7 @@
 
 	/** The Database Collate type. Don't change this if in doubt. */
 	define('DB_COLLATE', '');
-// }
+}
 
 /**#@+
  * Authentication Unique Keys and Salts.
@@ -90,6 +92,15 @@ $table_prefix  = 'wp_';
  */
 // define('WP_DEBUG', false);
 define('WP_DEBUG', true);
+
+/** SSL */
+define('FORCE_SSL_ADMIN', true);
+// in some setups HTTP_X_FORWARDED_PROTO might contain
+// a comma-separated list e.g. http,https
+// so check for https existence
+if (strpos($_SERVER['HTTP_X_FORWARDED_PROTO'], 'https') !== false) {
+	$_SERVER['HTTPS']='on';
+}
 
 /* That's all, stop editing! Happy blogging. */
 
