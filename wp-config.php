@@ -18,7 +18,7 @@
  * @package WordPress
  */
 
-php_info();
+phpinfo();
 
 if (strpos($_SERVER['SERVER_NAME'], 'localhost') !== false) {
 	define('DB_NAME', 'wp_sniperslax');
