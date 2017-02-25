@@ -18,26 +18,35 @@
  * @package WordPress
  */
 
-// ** MySQL settings - You can get this info from your web host ** //
-$url = parse_url(getenv('DATABASE_URL') ? getenv('DATABASE_URL') : getenv('CLEARDB_DATABASE_URL'));
+if (strpos($_SERVER['SERVER_NAME'], 'localhost') !== false) {
+	define('DB_NAME', 'wp_sniperslax');
+	define('DB_USER', 'sniperslax');
+	define('DB_PASSWORD', 'snipers1234');
+	define('DB_HOST', 'localhost');
+	define('DB_CHARSET', 'utf8');
+	define('DB_COLLATE', '');
+} else {
+	// ** MySQL settings - You can get this info from your web host ** //
+	$url = parse_url(getenv('DATABASE_URL') ? getenv('DATABASE_URL') : getenv('CLEARDB_DATABASE_URL'));
 
-/** The name of the database for WordPress */
-define('DB_NAME', trim($url['path'], '/'));
+	/** The name of the database for WordPress */
+	define('DB_NAME', trim($url['path'], '/'));
 
-/** MySQL database username */
-define('DB_USER', $url['user']);
+	/** MySQL database username */
+	define('DB_USER', $url['user']);
 
-/** MySQL database password */
-define('DB_PASSWORD', $url['pass']);
+	/** MySQL database password */
+	define('DB_PASSWORD', $url['pass']);
 
-/** MySQL hostname */
-define('DB_HOST', $url['host']);
+	/** MySQL hostname */
+	define('DB_HOST', $url['host']);
 
-/** Database Charset to use in creating database tables. */
-define('DB_CHARSET', 'utf8');
+	/** Database Charset to use in creating database tables. */
+	define('DB_CHARSET', 'utf8');
 
-/** The Database Collate type. Don't change this if in doubt. */
-define('DB_COLLATE', '');
+	/** The Database Collate type. Don't change this if in doubt. */
+	define('DB_COLLATE', '');
+}
 
 /**#@+
  * Authentication Unique Keys and Salts.
