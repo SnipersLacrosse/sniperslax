@@ -18,9 +18,7 @@
  * @package WordPress
  */
 
-var_dump($_SERVER);
-
-if (strpos($_SERVER['SERVER_NAME'], 'localhost') !== false) {
+if (strpos($_SERVER['HTTP_HOST'], 'localhost') !== false) {
 	define('DB_NAME', 'wp_sniperslax');
 	define('DB_USER', 'sniperslax');
 	define('DB_PASSWORD', 'snipers1234');
