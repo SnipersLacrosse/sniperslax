@@ -55,6 +55,10 @@ if (strpos($_SERVER['HTTP_HOST'], 'localhost') !== false) {
 	if (strpos($_SERVER['HTTP_X_FORWARDED_PROTO'], 'https') !== false) {
 		$_SERVER['HTTPS']='on';
 	}
+
+	// print errors to `heroku logs`
+	error_reporting(E_ALL);
+	ini_set("display_errors", 1);
 }
 
 /**#@+
