@@ -775,7 +775,7 @@ Class WPOA {
 				break;
 			}
 		}
-		$atts;
+		$atts = null;
 		//echo print_r($found);
 		if ($found) {
 			if ($as_string) {
